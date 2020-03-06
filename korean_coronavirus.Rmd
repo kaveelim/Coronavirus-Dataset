@@ -1,0 +1,26 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+ 
+
+```{r}
+library(tidyverse)
+```
+
+```{r}
+
+newfile <- tempfile()
+file.info("https://raw.githubusercontent.com/jihoo-kim/Coronavirus-Dataset/master/patient.csv")
+
+
+patient <- read_csv("patient.csv") %>%
+  mutate_if(is_character, as_factor) %>% 
+  mutate(id = as_factor(id))
+route <- read_csv("route.csv")
+time <- read_csv("time.csv")
+
+glimpse(patient)
+```
+
